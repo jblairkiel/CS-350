@@ -1,0 +1,61 @@
+import java.awt.*;
+
+import javax.swing.JPanel;
+
+public class Shapes extends JPanel{
+
+	private int tileChoice;
+	private int tileSize;
+
+	public Shapes( int tileChoice, int tileSize)
+	{
+		//using the same variables
+	}
+	
+	public void paintComponent(Graphics g)
+	{
+		super.paintComponent( g );
+	      
+	      g.setColor(Color.red);
+	      
+	      for ( int i = 0; i < 10; i += tileSize )
+	      {
+	    	  for ( int j = 0; j < 10; j += tileSize)
+	    	  {
+	    		  
+	         // pick the shape based on the user's choice
+	    		  switch ( tileChoice )
+                  {
+                  	case 1: //draw two 90 degree arcs
+                  		//(x, y, width, height, startAngle, Angle) 
+                  		g.drawArc(j, i, tileSize, tileSize, 90, 90 );
+                  		g.drawArc(j, i, tileSize, tileSize, 90, 90 );
+                  		break;
+                    default:
+                        break;
+                  }
+	    	  } // end switch
+	      } // end for
+	      
+	      // added by Zhang
+	      int x=20;
+	      int y=getHeight()-20;
+	      if (tileChoice==1) {
+	    	  g.drawString("10 rectangles drawn", x, y);
+	      }
+	      else if (tileChoice==2) {
+	    	  g.drawString("10 circles drawn", x, y);
+	      }
+	      else if (tileChoice==3) {
+	    	  g.drawString("10 rectangles filled", x, y);
+	      }
+	      else if (tileChoice==4) {
+	    	  g.drawString("10 circles filled", x, y);
+	      }
+	      else {
+	    	  g.drawString("10 lines drawn", x, y);    	 
+	      }
+	      tileChoice=(tileChoice+1)%5;
+	      // end of addition
+	}
+}

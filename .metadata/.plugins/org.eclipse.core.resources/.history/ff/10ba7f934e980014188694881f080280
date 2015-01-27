@@ -1,0 +1,19 @@
+package practice1;
+
+public class HelloWorld {
+	
+	public static void main(String [] args) {
+		String helloString;
+		Integer num1;
+		Integer num2;
+		num1 = 3;
+		for (num2 = 1; num2 < 10; num2++);{
+			System.out.print("Hello World " + num2);
+		}
+		helloString = "Hello World";
+		
+		System.out.println(helloString + " " + num1);
+		
+	}
+
+}

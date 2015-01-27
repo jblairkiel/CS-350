@@ -1,0 +1,15 @@
+package practice1;
+
+public class HelloWorld {
+	
+	public static void main(String [] args) {
+		String helloString;
+		Integer num1;
+		num1 = 3;
+		helloString = "Hello World";
+		
+		System.out.println(helloString + " " + num1);
+		
+	}
+
+}
