@@ -13,6 +13,7 @@ public class CommissionEmployee
    protected String socialSecurityNumber;
    protected double grossSales; // gross weekly sales
    protected double commissionRate; // commission percentage
+   protected double baseSalary;
 
    // five-argument constructor
    public CommissionEmployee( String first, String last, String ssn, 
@@ -26,7 +27,24 @@ public class CommissionEmployee
       setCommissionRate( rate ); // validate and store commission rate
    } // end five-argument CommissionEmployee constructor
 
-   // set first name
+   public CommissionEmployee(String first, String last, double sales, double rate,
+		double salary) {
+	   firstName = first;
+	   lastName = last;
+	   setGrossSales(sales);
+	   setCommissionRate(rate);
+	// TODO Auto-generated constructor stub
+}
+   public void setBaseSalary(double baseSalary)
+   {
+	   this.baseSalary = ( baseSalary < 0.0) ? 0.0 : baseSalary;
+   }
+
+   	public double getBaseSalary()
+   	{
+   		return baseSalary;
+   	}
+// set first name
    public void setFirstName( String first )
    {
       firstName = first; // should validate
@@ -89,7 +107,7 @@ public class CommissionEmployee
    // calculate earnings
    public double earnings()
    {
-      return commissionRate * grossSales;
+      return baseSalary + (getCommissionRate() * grossSales);
    } // end method earnings
 
    // return String representation of CommissionEmployee object

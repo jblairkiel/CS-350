@@ -7,6 +7,12 @@ public class BasePlusCommissionEmployee extends CommissionEmployee
    private double baseSalary; // base salary per week
 
    // six-argument constructor
+   public BasePlusCommissionEmployee( String first, String last,
+	  double sales, double rate, double salary)
+   {
+	  super(first, last, sales, rate, salary);
+	  setBaseSalary(salary);
+   }
    public BasePlusCommissionEmployee( String first, String last, 
       String ssn, double sales, double rate, double salary )
    {

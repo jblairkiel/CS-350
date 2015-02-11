@@ -1,3 +1,7 @@
+//CS350, Project #1, your name, a description of the program at the beginning
+//Project #1
+// Blair Kiel
+//This is a program to create 3 different shapes
 import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.util.ArrayList;
@@ -146,9 +150,6 @@ public class Shapes extends JPanel{
 	    		  switch ( choice )
                   {
                   	case 1: //draw two 90 degree arcs
-                  		//(x, y, width, height, startAngle, Angle) 
-                  		//l.drawArc(j , i , size, size, rotationStart1, rotationEnd1 );
-                  		//g.drawArc(j, i, size, size, rotationStart2, rotationEnd2 );
                   		g.drawArc(j + skew1x, i + skew1y, size, size, rotationStart1, rotationEnd1);
                   		g.drawArc(j + skew2x, i + skew2y, size, size, rotationStart2, rotationEnd2);
                   		break;

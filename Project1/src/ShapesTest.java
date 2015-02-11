@@ -1,3 +1,7 @@
+//CS350, Project #1, your name, a description of the program at the beginning
+//Project #1
+// Blair Kiel
+//This is a program to create 3 different shapes
 import java.io.*;
 import java.util.*;
 import javax.swing.JFrame;
