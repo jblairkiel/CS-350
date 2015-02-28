@@ -1,0 +1,168 @@
+import java.awt.Checkbox;
+import java.awt.CheckboxGroup;
+import java.awt.Container;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.ButtonGroup;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JRadioButtonMenuItem;
+import javax.swing.JTable;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+import javax.swing.JCheckBox;
+import javax.swing.JToggleButton;
+
+public class AddGUI extends JFrame implements ActionListener{
+	
+	String customerNumber;
+	//Labels
+	JLabel custNoLabel;
+	JLabel custNameLabel;
+	JLabel custDriveYearsLabel;
+	JLabel custOwnsJeepLabel;
+	JLabel custModelLabel;
+	JLabel custTransmissionLabel;
+	
+	//Controls
+	JLabel customerNumControl;
+	JTextField customerNameControl;
+	JTextField customerDrivingYearsControl;
+	JCheckBox customerOwnsJeepControl;
+	JRadioButton compassBut;
+	JRadioButton gCherokeeBut;
+	JRadioButton patriotBut;
+	JRadioButton renegadeBut;
+	JRadioButton othersBut;
+	JCheckBox customerTransmissionControl;
+	
+
+	public AddGUI(CDriver newDriver) {
+		super("AddGUI");
+
+		JFrame f = new JFrame("Add a Test Driver");
+		f.setSize(700, 500);
+		f.setVisible(true);
+		
+		Container c = f.getContentPane();
+		c.setLayout(null);
+		
+		//Labels
+		custNoLabel = new JLabel("Customer No.");
+		custNoLabel.setSize(100, 50);
+		custNoLabel.setLocation(20, 20);
+		c.add(custNoLabel);
+		
+		custNameLabel = new JLabel("Customer Name");
+		custNameLabel.setSize(200, 50);
+		custNameLabel.setLocation(20, 80);
+		c.add(custNameLabel);
+		
+		custDriveYearsLabel = new JLabel("How many years have you been driving?");
+		custDriveYearsLabel.setSize(250, 50);
+		custDriveYearsLabel.setLocation(20, 140);
+		c.add(custDriveYearsLabel);
+		
+		custOwnsJeepLabel = new JLabel("Do you have a Jeep?");
+		custOwnsJeepLabel.setSize(150, 50);
+		custOwnsJeepLabel.setLocation(20, 200);
+		c.add(custOwnsJeepLabel);
+
+		custModelLabel = new JLabel("Which models are you interested in?");
+		custModelLabel.setSize(250,50);
+		custModelLabel.setLocation(20, 250);
+		c.add(custModelLabel);
+		
+		custTransmissionLabel = new JLabel("Transmission: ");
+		custTransmissionLabel.setSize(150, 50);
+		custTransmissionLabel.setLocation(20, 300);
+		c.add(custTransmissionLabel);
+
+		//Controls
+		customerNumber = newDriver.getCustomerNum();
+		customerNumControl = new JLabel(customerNumber);
+		customerNumControl.setSize(250, 50);
+		customerNumControl.setLocation(150, 20);
+		c.add(customerNumControl);
+		
+		customerNameControl = new JTextField();
+		customerNameControl.setSize(50, 50);
+		customerNameControl.setLocation(150, 80);
+		c.add(customerNameControl);
+		
+		customerDrivingYearsControl = new JTextField();
+		customerDrivingYearsControl.setSize(250, 50);
+		customerDrivingYearsControl.setLocation(300, 140);
+		c.add(customerDrivingYearsControl);
+		
+		CheckboxGroup customerOwnsJeepControl= new CheckboxGroup();
+		Checkbox cbYes = new Checkbox("Yes", customerOwnsJeepControl, false);
+		Checkbox cbNo = new Checkbox("No", customerOwnsJeepControl, false);
+		cbYes.setSize(250, 50);
+		cbYes.setLocation(300, 200);
+		cbNo.setSize(250, 50);
+		cbNo.setLocation(350, 200);
+		c.add(cbYes);
+		c.add(cbNo);
+		
+		compassBut = new JRadioButton("Compass");
+		compassBut.setSize(250, 50);
+		compassBut.setLocation(300, 250);
+		c.add(compassBut);
+		
+		gCherokeeBut = new JRadioButton("Grand Cherokee");
+		gCherokeeBut.setSize(250, 50);
+		gCherokeeBut.setLocation(350, 250);
+		c.add(gCherokeeBut);
+		
+		patriotBut = new JRadioButton("Patriot");
+		patriotBut.setSize(250, 50);
+		patriotBut.setLocation(400, 250);
+		c.add(patriotBut);
+		
+		renegadeBut = new JRadioButton("Renegade");
+		renegadeBut.setSize(250, 50);
+		renegadeBut.setLocation(450, 250);
+		c.add(renegadeBut);
+		
+		othersBut = new JRadioButton("Others");
+		othersBut.setSize(250, 50);
+		othersBut.setLocation(500, 250);
+		c.add(renegadeBut);
+		
+		ButtonGroup group = new ButtonGroup();
+		group.add(compassBut);
+		group.add(gCherokeeBut);
+		group.add(patriotBut);
+		group.add(renegadeBut);
+		group.add(othersBut);
+		
+		
+		customerTransmissionControl = new JCheckBox();
+		customerTransmissionControl.setSize(250, 50);
+		customerTransmissionControl.setLocation(300, 300);
+		c.add(customerTransmissionControl);
+		
+		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	public static void main(String[] args) {
+		AddGUI mainWnd = new AddGUI(null);
+	}
+
+}

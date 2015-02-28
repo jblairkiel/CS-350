@@ -1,0 +1,43 @@
+
+public class CDriver {
+
+	private String customerNum;
+	private String customerName;
+	private String drivingYears;
+	private String jeepOwner;
+	private String model;
+	private String transmission;
+
+	private String newNum;
+	private String newName;
+	private String newYears;
+	private String newJeep;
+	private String newModel;
+	private String newTransmission;
+	private String newRow;
+
+
+	public CDriver(String newNum){
+
+		customerNum = newNum;
+
+	}
+
+	public String getCustomerNum(){return customerNum;}
+	
+	public String getCustomerData(){
+		newNum = customerNum + "                    ";
+		newName = customerName + "            ";
+		newYears = drivingYears + "                            ";
+		newJeep = jeepOwner + "                     ";
+		newModel = model + "                   ";
+		newTransmission = transmission;
+
+		newRow = newNum + newName + newYears + newJeep + newModel + newTransmission;
+		//String newRow = "00001                    Dustin Mark            7                            Yes                     C--R-                   5-Manual";
+		return newRow;
+		
+	}
+}
+
+

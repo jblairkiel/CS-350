@@ -1,0 +1,133 @@
+import java.awt.Container;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+import javax.swing.JCheckBox;
+
+public class JeepGUI extends JFrame implements ActionListener
+{
+	//Jlabels
+	JLabel customerNoLabel;
+	JLabel customerNameLabel;
+	JLabel customerDrivingYearsLabel;
+	JLabel customerJeepOwnerLabel;
+	JLabel customerCarModelLabel;
+	JLabel customerCarTransmissionLabel;
+
+	//Button objects
+	JButton addButton;
+	JButton editButton;
+	JButton removeButton;
+	JButton clearButton;
+	
+	JTable guiTable;
+	
+	public ArrayList<Integer> customerNums = new ArrayList<Integer>();
+	
+	
+	public JeepGUI() {
+		super("Jeep GUI");
+		
+		Container c = getContentPane();
+		c.setLayout(null);
+		
+		addButton = new JButton("Add");
+		addButton.setSize(150, 50);
+		addButton.setLocation(40, 500);
+		addButton.addActionListener(this);
+		c.add(addButton);
+		
+		editButton = new JButton("Edit");
+		editButton.setSize(150, 50);
+		editButton.setLocation(230, 500);
+		editButton.addActionListener(this);
+		c.add(editButton);
+		
+		removeButton = new JButton("Remove");
+		removeButton.setSize(150, 50);
+		removeButton.setLocation(420, 500);
+		removeButton.addActionListener(this);
+		c.add(removeButton);
+		
+		clearButton = new JButton("Clear");
+		clearButton.setSize(150, 50);
+		clearButton.setLocation(610, 500);
+		clearButton.addActionListener(this);
+		c.add(clearButton);
+		
+		String columnHeaders[] = {"Customer No.", "Customer Name", "Driving Years", "Jeep Owner", "Models", "Transmission"};
+		String[][] dataValues = {{"00001", "Dustin Mark", "7", "Yes", "C--R-", "5-Manual"}, {"00002", "Hamza Jeff", "18", "No", "--P--", "8-Auto"}};
+		customerNums.add(00001);
+		customerNums.add(00002);
+		guiTable = new JTable(dataValues, columnHeaders);
+		guiTable.setSize(700, 400);
+		guiTable.setLocation(50, 50);
+		c.add(guiTable);
+
+		//Column Labels
+		customerNoLabel = new JLabel("Customer No.");
+		customerNoLabel.setSize(100, 25);
+		customerNoLabel.setLocation(50, 25);
+		c.add(customerNoLabel);
+		
+		customerNameLabel = new JLabel("Customer Name");
+		customerNameLabel.setSize(120, 25);
+		customerNameLabel.setLocation(168, 25);
+		c.add(customerNameLabel);
+		
+		customerDrivingYearsLabel = new JLabel("Years Driving");
+		customerDrivingYearsLabel.setSize(100, 25);
+		customerDrivingYearsLabel.setLocation(282, 25);
+		c.add(customerDrivingYearsLabel);
+		
+		customerJeepOwnerLabel = new JLabel("Jeep Owner");
+		customerJeepOwnerLabel.setSize(100, 25);
+		customerJeepOwnerLabel.setLocation(400, 25);
+		c.add(customerJeepOwnerLabel);
+
+		customerCarModelLabel = new JLabel("Models");
+		customerCarModelLabel.setSize(100, 25);
+		customerCarModelLabel.setLocation(580, 25);
+		c.add(customerCarModelLabel);
+		
+		customerCarTransmissionLabel = new JLabel("Transmission");
+		customerCarTransmissionLabel.setSize(100, 25);
+		customerCarTransmissionLabel.setLocation(700, 25);
+		c.add(customerCarTransmissionLabel);
+	}
+	
+	public void actionPerformed(ActionEvent e) {
+		//addButton
+		if(e.getSource()==addButton) {
+			System.out.println("Add button pressed");
+		}
+		//editButton
+		else if(e.getSource()==editButton) {
+			System.out.println("Edit button pressed");
+		}
+		//removeButton
+		else if(e.getSource()==removeButton) {
+			System.out.println("Remove button pressed");
+		}
+		//clearButton
+		else if(e.getSource()==clearButton) {
+			System.out.println("Clear button pressed");
+		}
+	}
+	
+	public static void main(String[] args) {
+		JeepGUI mainWnd = new JeepGUI();
+	}
+}

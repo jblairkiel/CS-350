@@ -1,0 +1,15 @@
+
+public class CDriver {
+	public CDriver(double customerNo){
+		customerNum = customerNo;
+
+	}
+
+	private double customerNum;
+	private String customerName;
+	private int drivingYears;
+	private String jeepOwner;
+	private String model;
+	private String transmission;
+	public String getCustomerNum(){return Double.toString(customerNum);}
+}

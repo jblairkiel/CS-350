@@ -1,0 +1,62 @@
+import java.awt.Container;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+import javax.swing.JCheckBox;
+
+public class JeepGUI extends JFrame implements ActionListener
+{
+	//Button objects
+	JButton addButton;
+	JButton editButton;
+	JButton removeButton;
+	JButton clearButton;
+	
+	public JeepGUI() {
+		super("Jeep GUI");
+		
+		Container c = getContentPane();
+		c.setLayout(null);
+		
+		addButton = new JButton("Add");
+		addButton.setSize(150, 50);
+		addButton.setLocation(50, 500);
+		addButton.addActionListener(this);
+		c.add(addButton);
+		
+		editButton = new JButton("Edit");
+		editButton.setSize(150, 50);
+		editButton.setLocation(200, 500);
+		editButton.addActionListener(this);
+		c.add(editButton);
+		
+		removeButton = new JButton("Remove");
+		removeButton.setSize(150, 50);
+		removeButton.setLocation(350, 500);
+		removeButton.addActionListener(this);
+		c.add(removeButton);
+		
+		clearButton = new JButton("Clear");
+		clearButton.setSize(150, 50);
+		clearButton.setLocation(500, 500);
+		clearButton.addActionListener(this);
+		c.add(clearButton);
+	}
+	
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource()==addButton) {
+			System.out.println("Add button pressed");
+		}
+	}
+	
+	public static void main(String[] args) {
+		JeepGUI mainWnd = new JeepGUI();
+	}
+}
