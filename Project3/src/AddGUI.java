@@ -1,33 +1,25 @@
-import java.awt.Checkbox;
-import java.awt.CheckboxGroup;
 import java.awt.Container;
-import java.awt.FlowLayout;
-import java.awt.Font;
 import java.awt.Frame;
-import java.awt.MenuBar;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.WindowEvent;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-import javax.swing.JRadioButtonMenuItem;
-import javax.swing.JTable;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
-import javax.swing.JCheckBox;
-import javax.swing.JToggleButton;
 
 public class AddGUI extends JFrame implements ActionListener{
 
-	String customerNumber;
+	ButtonGroup customerTransmission;
+	String custNo;
+	String custName;
+	String custYearsDriving;
+	String custOwnsJeep;
+	String custModel;
+	String custTrans;
+
 	//Labels
 	JLabel custNoLabel;
 	JLabel custNameLabel;
@@ -97,8 +89,8 @@ public class AddGUI extends JFrame implements ActionListener{
 		c.add(custTransmissionLabel);
 
 		//Controls
-		customerNumber = customerNum;
-		customerNumControl = new JLabel(customerNumber);
+		custNo = customerNum;
+		customerNumControl = new JLabel(custNo);
 		customerNumControl.setSize(250, 50);
 		customerNumControl.setLocation(150, 20);
 		c.add(customerNumControl);
@@ -197,67 +189,69 @@ public class AddGUI extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==submitButton){
 			System.out.print("Button pressed");
-			String custNo = customerNumControl.getText();
-			String custName = customerNameControl.getText();
-			String custYearsDriving = customerDrivingYearsControl.getText();
+			custNo = customerNumControl.getText();
+			custName = customerNameControl.getText();
+			custYearsDriving = customerDrivingYearsControl.getText();
+			custModel = "";
 
-			String ownsJeep;
 			if(cbYes.isSelected()){
-				ownsJeep = "Yes";
+				custOwnsJeep = "Yes";
 			}
 			else{
-				ownsJeep = "No";
+				custOwnsJeep = "No";
 			}
-			System.out.print("ownsJeep");
+			System.out.print(" ownsJeep ");
 
-			String custModel = "";
 			if(compassBut.isSelected()){
 				custModel += "C";
 			}
-			else if(compassBut.isSelected()==false){
+			else {
 				custModel += "-";
 			}
-			else if(gCherokeeBut.isSelected()){
+			if(gCherokeeBut.isSelected()){
 				custModel += "G";
 			}
-			else if(gCherokeeBut.isSelected()==false){
+			else {
 				custModel += "-";
 			}
-			else if(patriotBut.isSelected()){
+			if(patriotBut.isSelected()){
 				custModel += "P";
 			}
-			else if(patriotBut.isSelected()==false){
+			else {
 				custModel += "-";
 			}
-			else if(renegadeBut.isSelected()){
+			if(renegadeBut.isSelected()){
 				custModel += "R";
 			}
-			else if(renegadeBut.isSelected()==false){
+			else {
 				custModel += "-";
 			}
-			else if(othersBut.isSelected()){
+			if(othersBut.isSelected()){
 				custModel += "O";
 			}
-			else if(othersBut.isSelected()==false){
+			else{
 				custModel += "-";
 			}
 			System.out.print("Cust model");
 			
-			String custTrans = "";
 			if(fiveSpeedManBut.isSelected()){
 				custTrans = "5-Man";
+				System.out.print(custTrans);
 			}
 			else if(sixSpeedManBut.isSelected()){
 				custTrans = "6-Man";
+				System.out.print(custTrans);
 			}
 			else if(eightSpeedAutoBut.isSelected()){
 				custTrans = "8-Auto";
+				System.out.print(custTrans);
 			}
 			else{
 				custTrans = "Don't Care";
+				System.out.print(custTrans);
 			}
 			System.out.print("CustTrans");
-			JeepGUI.addCustomer(custNo, custName, custYearsDriving, ownsJeep, custModel, custTrans);
+			JeepGUI.addCustomer(custNo, custName, custYearsDriving, custOwnsJeep, custModel, custTrans);
 			JeepGUI.addCustomerNum(custNo);
 			Frame f;
 			f = getActiveFrame();

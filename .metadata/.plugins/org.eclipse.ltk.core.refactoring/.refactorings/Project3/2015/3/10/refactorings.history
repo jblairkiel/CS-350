@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename field &apos;ownsJeep&apos; in &apos;AddGUI&apos; to &apos;custOwnsJeep&apos;&#x0A;- Original project: &apos;Project3&apos;&#x0A;- Original element: &apos;AddGUI.ownsJeep&apos;&#x0A;- Renamed element: &apos;AddGUI.custOwnsJeep&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" delegate="false" deprecate="false" description="Rename field &apos;ownsJeep&apos;" flags="589830" getter="false" id="org.eclipse.jdt.ui.rename.field" input="/src&lt;{AddGUI.java[AddGUI^ownsJeep" name="custOwnsJeep" references="true" setter="false" stamp="1425244379756" textual="false" version="1.0"/>
+</session>

@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.accessibility.AccessibleContext;
+import javax.swing.DefaultListCellRenderer;
 import javax.swing.DefaultListModel;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -37,6 +38,7 @@ public class JeepGUI extends JFrame implements ActionListener
 	JButton removeButton;
 	JButton clearButton;
 	
+	public static ArrayList<CDriver> customerList = new ArrayList<CDriver>();
 	static JTable guiTable;
 	public static JList list;
 	public static DefaultListModel model;
@@ -84,12 +86,14 @@ public class JeepGUI extends JFrame implements ActionListener
 		//c.add(guiTable);
 		//list = new DefaultListModel();
 		model = new DefaultListModel();
-		String dataValues = "00001                    Dustin Mark            7                            Yes                     C--R-                   5-Manual";
-		model.addElement(dataValues);
-		customerNums.add(1);
+		//String dataValues = "00001                    Dustin Mark            7                            Yes                     C--R-                   5-Manual";
+		//model.addElement(dataValues);
+		//customerNums.add(1);
 		list = new JList(model);
 		list.setSize(700, 400);
 		list.setLocation(50, 50);
+		DefaultListCellRenderer renderer = (DefaultListCellRenderer) list.getCellRenderer(); 
+		renderer.setFont(new Font("Monospaced", Font.PLAIN, 12));
 		c.add(list);
 
 
@@ -140,14 +144,32 @@ public class JeepGUI extends JFrame implements ActionListener
 		}
 		//editButton
 		else if(e.getSource()==editButton) {
-			System.out.println("Edit button pressed");
+			int index = list.getSelectedIndex();
+			if(index == -1){
+				// do nothing
+			}
+			else{
+				String newData;
+				CDriver editingCust = customerList.get(index);
+				EditGUI a = new EditGUI(editingCust);
+				editingCust = customerList.get(index);
+				newData = editingCust.getCustomerData();
+				model.setElementAt(newData, index);
+				list.setModel(model);
+				System.out.println("Edit button pressed");
+			}
 		}
 		//removeButton
 		else if(e.getSource()==removeButton) {
-			System.out.println("Remove button pressed");
+			if(list.isSelectionEmpty()){
+				//do nothing
+			}
+			removeCustomer();
 		}
 		//clearButton
 		else if(e.getSource()==clearButton) {
+			model.removeAllElements();
+			list.setModel(model);
 			System.out.println("Clear button pressed");
 		}
 	}
@@ -159,14 +181,19 @@ public class JeepGUI extends JFrame implements ActionListener
 	
 	public String newCustomerNum(){
 		String ret = "";
-		Integer cur = customerNums.get(0);
-		for (int i = 1; i < customerNums.size(); i++){
-			if(customerNums.get(i) > cur){
-				cur = customerNums.get(i);
-			}
+		if(customerNums.size() == 0){
+			ret = "00001";
 		}
-		if((int) Math.log10(cur) + 1 == 1){
-			ret = "0000" + Integer.toString(cur + 1);
+		else{
+			Integer cur = customerNums.get(0);
+			for (int i = 1; i < customerNums.size(); i++){
+				if(customerNums.get(i) > cur){
+					cur = customerNums.get(i);
+				}
+			}
+			if((int) Math.log10(cur) + 1 == 1){
+				ret = "0000" + Integer.toString(cur + 1);
+			}
 		}
 		return ret;
 	}
@@ -176,12 +203,26 @@ public class JeepGUI extends JFrame implements ActionListener
 		model = new DefaultListModel();
 		CDriver newDriver = new CDriver(cNum, cName, cYears, cJeep, cModels, cTransmission);
 		String newData = newDriver.getCustomerData();
+		customerList.add(newDriver);
 		model = (DefaultListModel) list.getModel();
 		model.addElement(newData);
 		list.setModel(model);
 		//list.addElement()
 		//DefaultTableModel model = (DefaultTableModel) guiTable.getModel();
 		//model.addRow(new Object[]{custNo, custName, custYearsDriving, ownsJeep, custModel, custTrans});
+	}
+	
+	public static void removeCustomer(){
+		if(list.isSelectionEmpty()){
+			//do nothing
+		}
+		else{
+		int index = list.getSelectedIndex();
+		Object object = model.getElementAt(index);
+		model.removeElement(object);
+		list.setModel(model);
+		System.out.println("Remove button pressed");
+		}
 	}
 
 }
