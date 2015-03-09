@@ -92,8 +92,7 @@ public class JeepGUI extends JFrame implements ActionListener
 		list = new JList(model);
 		list.setSize(700, 400);
 		list.setLocation(50, 50);
-		DefaultListCellRenderer renderer = (DefaultListCellRenderer) list.getCellRenderer(); 
-		renderer.setFont(new Font("Monospaced", Font.PLAIN, 12));
+		list.setFont(new Font("Courier New", Font.PLAIN, 12));
 		c.add(list);
 
 
@@ -106,31 +105,37 @@ public class JeepGUI extends JFrame implements ActionListener
 		customerNoLabel = new JLabel("Customer No.");
 		customerNoLabel.setSize(100, 25);
 		customerNoLabel.setLocation(50, 25);
+		customerNoLabel.setFont(new Font("Courier New", Font.PLAIN, 12));
 		c.add(customerNoLabel);
 		
 		customerNameLabel = new JLabel("Customer Name");
 		customerNameLabel.setSize(120, 25);
-		customerNameLabel.setLocation(168, 25);
+		customerNameLabel.setLocation(170, 25);
+		customerNameLabel.setFont(new Font("Courier New", Font.PLAIN, 12));
 		c.add(customerNameLabel);
 		
 		customerDrivingYearsLabel = new JLabel("Years Driving");
 		customerDrivingYearsLabel.setSize(100, 25);
 		customerDrivingYearsLabel.setLocation(284, 25);
+		customerDrivingYearsLabel.setFont(new Font("Courier New", Font.PLAIN, 12));
 		c.add(customerDrivingYearsLabel);
 		
 		customerJeepOwnerLabel = new JLabel("Jeep Owner");
 		customerJeepOwnerLabel.setSize(100, 25);
-		customerJeepOwnerLabel.setLocation(403, 25);
+		customerJeepOwnerLabel.setLocation(408, 25);
+		customerJeepOwnerLabel.setFont(new Font("Courier New", Font.PLAIN, 12));
 		c.add(customerJeepOwnerLabel);
 
 		customerCarModelLabel = new JLabel("Models");
 		customerCarModelLabel.setSize(100, 25);
-		customerCarModelLabel.setLocation(516, 25);
+		customerCarModelLabel.setLocation(513, 25);
+		customerCarModelLabel.setFont(new Font("Courier New", Font.PLAIN, 12));
 		c.add(customerCarModelLabel);
 		
 		customerCarTransmissionLabel = new JLabel("Transmission");
 		customerCarTransmissionLabel.setSize(100, 25);
-		customerCarTransmissionLabel.setLocation(634, 25);
+		customerCarTransmissionLabel.setLocation(631, 25);
+		customerCarTransmissionLabel.setFont(new Font("Courier New", Font.PLAIN, 12));
 		c.add(customerCarTransmissionLabel);
 	}
 	

@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.ButtonGroup;
+import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import javax.swing.JButton;
@@ -34,11 +35,11 @@ public class AddGUI extends JFrame implements ActionListener{
 	JTextField customerDrivingYearsControl;
 	JRadioButton cbYes;
 	JRadioButton cbNo;
-	JRadioButton compassBut;
-	JRadioButton gCherokeeBut;
-	JRadioButton patriotBut;
-	JRadioButton renegadeBut;
-	JRadioButton othersBut;
+	JCheckBox compassBut;
+	JCheckBox gCherokeeBut;
+	JCheckBox patriotBut;
+	JCheckBox renegadeBut;
+	JCheckBox othersBut;
 	JRadioButton fiveSpeedManBut;
 	JRadioButton sixSpeedManBut;
 	JRadioButton eightSpeedAutoBut;
@@ -117,27 +118,27 @@ public class AddGUI extends JFrame implements ActionListener{
 		c.add(cbYes);
 		c.add(cbNo);
 
-		compassBut = new JRadioButton("Compass");
+		compassBut = new JCheckBox("Compass");
 		compassBut.setSize(100, 50);
 		compassBut.setLocation(40, 315);
 		c.add(compassBut);
 
-		gCherokeeBut = new JRadioButton("Grand Cherokee");
+		gCherokeeBut = new JCheckBox("Grand Cherokee");
 		gCherokeeBut.setSize(150, 50);
 		gCherokeeBut.setLocation(150, 315);
 		c.add(gCherokeeBut);
 
-		patriotBut = new JRadioButton("Patriot");
+		patriotBut = new JCheckBox("Patriot");
 		patriotBut.setSize(100, 50);
 		patriotBut.setLocation(300, 315);
 		c.add(patriotBut);
 
-		renegadeBut = new JRadioButton("Renegade");
+		renegadeBut = new JCheckBox("Renegade");
 		renegadeBut.setSize(100, 50);
 		renegadeBut.setLocation(400, 315);
 		c.add(renegadeBut);
 
-		othersBut = new JRadioButton("Others");
+		othersBut = new JCheckBox("Others");
 		othersBut.setSize(100, 50);
 		othersBut.setLocation(500, 315);
 		c.add(othersBut);
@@ -232,7 +233,6 @@ public class AddGUI extends JFrame implements ActionListener{
 			else{
 				custModel += "-";
 			}
-			System.out.print("Cust model");
 			
 			if(fiveSpeedManBut.isSelected()){
 				custTrans = "5-Man";

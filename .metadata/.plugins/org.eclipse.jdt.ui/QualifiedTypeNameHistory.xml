@@ -9,4 +9,5 @@
 <fullyQualifiedTypeName name="JeepGUI"/>
 <fullyQualifiedTypeName name="javax.swing.DefaultListCellRenderer"/>
 <fullyQualifiedTypeName name="java.awt.Font"/>
+<fullyQualifiedTypeName name="javax.swing.JCheckBox"/>
 </qualifiedTypeNameHistroy>

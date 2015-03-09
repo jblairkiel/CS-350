@@ -19,6 +19,7 @@ public class CDriver {
 	String trans4;
 	Integer numCount;
 	Integer nameCount;
+	Integer beforeYearsCount;
 	Integer yearsCount;
 	Integer jeepCount;
 	Integer modelsCount;
@@ -26,6 +27,7 @@ public class CDriver {
 	String numSpaces = "";
 	String nameSpaces = "";
 	String yearsSpaces = "";
+	String beforeYearsSpaces = "";
 	String jeepSpaces = "";
 	String modelsSpaces = "";
 	String tranmsissionSpaces = "";
@@ -48,12 +50,14 @@ public class CDriver {
 		models = cModels;
 		transmission = cTransmission;
 		
+		System.out.print(models);
 		modelsArray = models.split("");
-		model1 = modelsArray[1];
-		model2 = modelsArray[2];
-		model3 = modelsArray[3];
-		model4 = modelsArray[4];
-		model5 = modelsArray[5];
+		System.out.print(modelsArray);
+		model1 = modelsArray[0];
+		model2 = modelsArray[1];
+		model3 = modelsArray[2];
+		model4 = modelsArray[3];
+		model5 = modelsArray[4];
 		
 		
 	}
@@ -62,12 +66,13 @@ public class CDriver {
 	
 	public String getCustomerData(){
 		
-		numCount = 25 - customerNum.length();
-		nameCount = 25 - customerName.length();
-		yearsCount = 28 - drivingYears.length();
-		jeepCount = 25 - jeepOwner.length();
-		modelsCount = 25 - models.length();
-		transmissionCount = 25 - transmission.length();
+		numCount = 17 - customerNum.length();
+		nameCount = 25 - customerName.length() - drivingYears.length();
+		//beforeYearsCount = 19 - customerName.length();
+		yearsCount = 9;
+		jeepCount = 15 - jeepOwner.length();
+		modelsCount = 17 - models.length();
+		transmissionCount = 17 - transmission.length();
 
 		int i;
 		for (i=0; i<numCount; i++){
@@ -76,6 +81,9 @@ public class CDriver {
 		for (i=0; i<nameCount; i++){
 			nameSpaces += " ";
 		}
+		//for (i=0; i<beforeYearsCount; i++){
+		//	beforeYearsSpaces += " ";
+		//}
 		for (i=0; i<yearsCount; i++){
 			yearsSpaces += " ";
 		}
