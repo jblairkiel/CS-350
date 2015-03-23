@@ -236,21 +236,16 @@ public class AddGUI extends JFrame implements ActionListener{
 			
 			if(fiveSpeedManBut.isSelected()){
 				custTrans = "5-Man";
-				System.out.print(custTrans);
 			}
 			else if(sixSpeedManBut.isSelected()){
 				custTrans = "6-Man";
-				System.out.print(custTrans);
 			}
 			else if(eightSpeedAutoBut.isSelected()){
 				custTrans = "8-Auto";
-				System.out.print(custTrans);
 			}
 			else{
 				custTrans = "Don't Care";
-				System.out.print(custTrans);
 			}
-			System.out.print("CustTrans");
 			JeepGUI.addCustomer(custNo, custName, custYearsDriving, custOwnsJeep, custModel, custTrans);
 			JeepGUI.addCustomerNum(custNo);
 			Frame f;

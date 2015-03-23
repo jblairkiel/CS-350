@@ -1,3 +1,8 @@
+//###########################
+//# This is a project to simulate a Jeep Dealership's GUI for servicing cars
+//#	CS350 Project 3
+//# Blair Kiel
+//##########################
 import javax.swing.JFrame;
 
 public class JeepGUIWindow {

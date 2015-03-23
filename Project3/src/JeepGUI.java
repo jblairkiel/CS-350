@@ -75,31 +75,12 @@ public class JeepGUI extends JFrame implements ActionListener
 		clearButton.addActionListener(this);
 		c.add(clearButton);
 		
-		//String columnHeaders[] = {"Customer No.", "Customer Name", "Driving Years", "Jeep Owner", "Models", "Transmission"};
-		//String[][] dataValues = {{"00001", "Dustin Mark", "7", "Yes", "C--R-", "5-Manual"}, {"00002", "Hamza Jeff", "18", "No", "--P--", "8-Auto"}};
-		//DefaultTableModel model = new DefaultTableModel(dataValues, columnHeaders);
-		//customerNums.add(1);
-		//customerNums.add(2);
-		//guiTable = new JTable(model);
-		//guiTable.setSize(700, 400);
-		//guiTable.setLocation(50, 50);
-		//c.add(guiTable);
-		//list = new DefaultListModel();
 		model = new DefaultListModel();
-		//String dataValues = "00001                    Dustin Mark            7                            Yes                     C--R-                   5-Manual";
-		//model.addElement(dataValues);
-		//customerNums.add(1);
 		list = new JList(model);
 		list.setSize(700, 400);
 		list.setLocation(50, 50);
 		list.setFont(new Font("Courier New", Font.PLAIN, 12));
 		c.add(list);
-
-
-		//list.setFont(Font.getFont("monospaced"));
-		//list.setSize(700, 400);
-		//list.setLocation(50, 50);
-		//c.add(list);
 
 		//Column Labels
 		customerNoLabel = new JLabel("Customer No.");
@@ -145,7 +126,6 @@ public class JeepGUI extends JFrame implements ActionListener
 			String newNum = newCustomerNum();
 			System.out.print(newNum);
 			AddGUI a = new AddGUI(newNum);
-			//System.out.println("Add button pressed");
 		}
 		//editButton
 		else if(e.getSource()==editButton) {
@@ -161,7 +141,6 @@ public class JeepGUI extends JFrame implements ActionListener
 				newData = editingCust.getCustomerData();
 				model.setElementAt(newData, index);
 				list.setModel(model);
-				System.out.println("Edit button pressed");
 			}
 		}
 		//removeButton
@@ -175,7 +154,6 @@ public class JeepGUI extends JFrame implements ActionListener
 		else if(e.getSource()==clearButton) {
 			model.removeAllElements();
 			list.setModel(model);
-			System.out.println("Clear button pressed");
 		}
 	}
 	
@@ -212,9 +190,6 @@ public class JeepGUI extends JFrame implements ActionListener
 		model = (DefaultListModel) list.getModel();
 		model.addElement(newData);
 		list.setModel(model);
-		//list.addElement()
-		//DefaultTableModel model = (DefaultTableModel) guiTable.getModel();
-		//model.addRow(new Object[]{custNo, custName, custYearsDriving, ownsJeep, custModel, custTrans});
 	}
 	
 	public static void removeCustomer(){
@@ -226,7 +201,6 @@ public class JeepGUI extends JFrame implements ActionListener
 		Object object = model.getElementAt(index);
 		model.removeElement(object);
 		list.setModel(model);
-		System.out.println("Remove button pressed");
 		}
 	}
 

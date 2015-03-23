@@ -246,7 +246,6 @@ public class EditGUI extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==submitButton){
-			System.out.print("Button pressed");
 			custNo = customerNumControl.getText();
 			custName = customerNameControl.getText();
 			custYearsDriving = customerDrivingYearsControl.getText();
@@ -257,7 +256,6 @@ public class EditGUI extends JFrame implements ActionListener{
 			else{
 				custOwnsJeep = "No";
 			}
-			System.out.print("ownsJeep");
 
 			String custModel = "";
 			if(compassBut.isSelected()){
