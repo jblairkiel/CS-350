@@ -1,0 +1,17 @@
+package circleRing;
+
+public class cRing {
+
+	int X, Y, R, r;
+
+	public void CRing(int x, int y, int r_larger, int r_smaller) {
+		X=x; Y=y; R=r_larger; r=r_smaller;
+	}
+	
+	public boolean isInside(int x, int y){
+		int d2=(X-x)*(X-x)+(Y-y)*(Y-y);
+		if (d2>R*R) return false;
+		if (d2<r*r) return false;
+		return true;
+	}
+}

@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 INDEX VERSION 1.126+F:\Documents\Programming\CS-350\.metadata\.plugins\org.eclipse.jdt.core
 881895235.index
 248351807.index
@@ -36,3 +37,24 @@ INDEX VERSION 1.126+F:\Documents\Programming\CS-350\.metadata\.plugins\org.eclip
 2664979389.index
 358050146.index
 1511029860.index
+=======
+INDEX VERSION 1.126+/Users/jblairkiel/Documents/School/CS 350/CS-350/.metadata/.plugins/org.eclipse.jdt.core
+2352934446.index
+1661048093.index
+3303131615.index
+1224561148.index
+2710549243.index
+2657556362.index
+2052924993.index
+3813963771.index
+2747908546.index
+2533798585.index
+3774436368.index
+2208720166.index
+224007895.index
+1360393150.index
+2815712756.index
+3374662499.index
+901995686.index
+611947109.index
+>>>>>>> Stashed changes

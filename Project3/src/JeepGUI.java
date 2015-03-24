@@ -80,6 +80,8 @@ public class JeepGUI extends JFrame implements ActionListener
 		list.setSize(700, 400);
 		list.setLocation(50, 50);
 		list.setFont(new Font("Courier New", Font.PLAIN, 12));
+		DefaultListCellRenderer renderer = (DefaultListCellRenderer) list.getCellRenderer(); 
+		renderer.setFont(new Font("Courier", Font.PLAIN, 12));
 		c.add(list);
 
 		//Column Labels
