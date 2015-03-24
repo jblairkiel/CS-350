@@ -5,8 +5,9 @@ public class ThreadSync
 {
     private static boolean runFlag = true;
 	
-    	static Semaphore sem1 = new Semaphore(2);
-    	static Semaphore sem2 = new Semaphore(3);
+    	static Semaphore semSym = new Semaphore(4);
+    	static Semaphore semDig = new Semaphore(0);
+    	static Semaphore semLet = new Semaphore(0);
     public static void main( String[] args ) {
 
      	Runnable[] tasks = new Runnable[17];
@@ -48,12 +49,13 @@ public class ThreadSync
         public void run(){
     	    while (runFlag) {
        	        try {
-       	        	System.out.printf( "%c\n", c);
-					sem1.acquire();
+					semDig.acquire();
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+  	        	System.out.printf( "%c\n", c);
+  	        	semLet.release(2);
     	    }
         }
     }
@@ -64,11 +66,12 @@ public class ThreadSync
         public void run(){
     	    while (runFlag) {
     	        try {
-    	        	System.out.printf( "%c\n", c);
-    	        	sem2.acquire();
+    	        	semLet.acquire(2);
     	        } catch (InterruptedException e) {
     	        	e.printStackTrace();
     	        }
+   	        	System.out.printf( "%c\n", c);
+   	        	semSym.release();
     	    }
          }
     }
@@ -78,11 +81,14 @@ public class ThreadSync
     	public PrintSymbol(char c) { this.c=c; }
         public void run(){
     	    while (runFlag) {
+    	    	try{
+    	    	semSym.acquire(4);
+    	        //semLet.release();
+    	    	}catch (InterruptedException e) {
+    	    		e.printStackTrace();
+    	    	}
     	        System.out.printf( "%c\n", c);
-    	        sem1.release();
-    	        sem1.release();
-    	        sem2.release();
-    	        sem2.release();
+    	        semDig.release(2);
     	    }
         }
     }
