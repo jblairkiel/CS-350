@@ -1,15 +1,16 @@
 import java.lang.Thread;
 import java.util.concurrent.*;
 
-public class ThreadSync
+public class ThreadSync 
 {
+	//Start with 4 symbol permits so that after two digits are run and two letters are run that 4 symbol
+	//permits are released to start another loop
+	private static Semaphore semSym = new Semaphore(4);
+	private static Semaphore semDig = new Semaphore(0);
+	private static Semaphore semLet = new Semaphore(0);
     private static boolean runFlag = true;
 	
-    	static Semaphore semSym = new Semaphore(4);
-    	static Semaphore semDig = new Semaphore(0);
-    	static Semaphore semLet = new Semaphore(0);
     public static void main( String[] args ) {
-
      	Runnable[] tasks = new Runnable[17];
     	Thread[] threads = new Thread[17];
     	// create 10 digit threads
@@ -31,7 +32,7 @@ public class ThreadSync
 
 		// Let the threads to run for a period of time
         try {
-        	Thread.sleep(500);
+        	Thread.sleep(50);
         }
         catch (InterruptedException ex) {
         	ex.printStackTrace();
@@ -48,14 +49,16 @@ public class ThreadSync
     	public PrintDigit(char c) { this.c=c; }
         public void run(){
     	    while (runFlag) {
-       	        try {
+    	    	try {
 					semDig.acquire();
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					//e.printStackTrace();
 				}
-  	        	System.out.printf( "%c\n", c);
-  	        	semLet.release(2);
+       	        System.out.printf( "%c\n", c);
+       	        semLet.release(2);
+       	        //semLet.release();
+       	        semSym.release();
+       	        
     	    }
         }
     }
@@ -65,13 +68,15 @@ public class ThreadSync
     	public PrintLetter(char c) { this.c=c; }
         public void run(){
     	    while (runFlag) {
-    	        try {
-    	        	semLet.acquire(2);
-    	        } catch (InterruptedException e) {
-    	        	e.printStackTrace();
-    	        }
-   	        	System.out.printf( "%c\n", c);
-   	        	semSym.release();
+    	    	try {
+    	    		
+					semLet.acquire(2);
+				} catch (InterruptedException e) {
+					//e.printStackTrace();
+				}
+    	        System.out.printf( "%c\n", c);
+    	        semSym.release();
+    	        
     	    }
          }
     }
@@ -81,14 +86,14 @@ public class ThreadSync
     	public PrintSymbol(char c) { this.c=c; }
         public void run(){
     	    while (runFlag) {
-    	    	try{
-    	    	semSym.acquire(4);
-    	        //semLet.release();
-    	    	}catch (InterruptedException e) {
-    	    		e.printStackTrace();
-    	    	}
+    	    	try {
+					semSym.acquire(4);
+				} catch (InterruptedException e) {
+					//e.printStackTrace();
+				}
     	        System.out.printf( "%c\n", c);
     	        semDig.release(2);
+    	        
     	    }
         }
     }

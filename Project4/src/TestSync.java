@@ -48,13 +48,9 @@ public class TestSync
         public void run(){
     	    while (runFlag) {
     	    	try {
-    	    		System.out.println("Print digit thread" + this.c);
-    	    		System.out.println("semdig is now " + semDig.availablePermits());
-    	    		System.out.println("semLet is now " + semLet.availablePermits());
-    	    		System.out.println("semSym is now " + semSym.availablePermits());
 					semDig.acquire();
 				} catch (InterruptedException e) {
-					e.printStackTrace();
+					//e.printStackTrace();
 				}
        	        System.out.printf( "%c\n", c);
        	        semLet.release(2);
@@ -74,7 +70,7 @@ public class TestSync
     	    		
 					semLet.acquire(2);
 				} catch (InterruptedException e) {
-					e.printStackTrace();
+					//e.printStackTrace();
 				}
     	        System.out.printf( "%c\n", c);
     	        semSym.release();
@@ -91,7 +87,7 @@ public class TestSync
     	    	try {
 					semSym.acquire(4);
 				} catch (InterruptedException e) {
-					e.printStackTrace();
+					//e.printStackTrace();
 				}
     	        System.out.printf( "%c\n", c);
     	        semDig.release(2);
