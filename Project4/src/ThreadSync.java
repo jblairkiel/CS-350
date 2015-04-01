@@ -5,8 +5,10 @@ public class ThreadSync
 {
     private static boolean runFlag = true;
 	
-    	static Semaphore sem1 = new Semaphore(2);
-    	static Semaphore sem2 = new Semaphore(3);
+    	static Semaphore semDig = new Semaphore(2);
+    	static Semaphore semLet = new Semaphore(3);
+    	static Semaphore semSym = new Semaphore(1);
+
     public static void main( String[] args ) {
 
      	Runnable[] tasks = new Runnable[17];
@@ -30,7 +32,7 @@ public class ThreadSync
 
 		// Let the threads to run for a period of time
         try {
-        	Thread.sleep(500);
+        	Thread.sleep(500000000);
         }
         catch (InterruptedException ex) {
         	ex.printStackTrace();
@@ -48,8 +50,8 @@ public class ThreadSync
         public void run(){
     	    while (runFlag) {
        	        try {
-       	        	System.out.printf( "%c\n", c);
-					sem1.acquire();
+					semDig.acquire();
+       	        	System.out.printf( "%c", c);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -64,8 +66,8 @@ public class ThreadSync
         public void run(){
     	    while (runFlag) {
     	        try {
-    	        	System.out.printf( "%c\n", c);
-    	        	sem2.acquire();
+    	        	System.out.printf( "%c", c);
+    	        	semLet.acquire();
     	        } catch (InterruptedException e) {
     	        	e.printStackTrace();
     	        }
@@ -78,11 +80,27 @@ public class ThreadSync
     	public PrintSymbol(char c) { this.c=c; }
         public void run(){
     	    while (runFlag) {
-    	        System.out.printf( "%c\n", c);
-    	        sem1.release();
-    	        sem1.release();
-    	        sem2.release();
-    	        sem2.release();
+    	    	try {
+    	    		semSym.acquire();
+    	    		System.out.printf( "%c", c);
+    	    		semLet.release();
+    	    		semLet.release();
+    	    		
+    	    		//semSym.acquire();
+    	    		//System.out.printf( "%c", c);
+    	    		//semLet.release();
+    	    		//semLet.release();
+    	    		//semLet.acquire();
+    	    		//semSym.release();
+
+    	    		//System.out.println("semDig is: " + semDig.availablePermits() + " ");
+    	    		//semDig.release();
+    	    		//semDig.release();
+    	    		//System.out.println("semDig is: " + semDig.availablePermits() + " ");
+    	    		System.out.print("\n");
+    	    	} catch (InterruptedException e) {
+    	    		e.printStackTrace();
+    	    	}
     	    }
         }
     }
