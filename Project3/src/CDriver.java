@@ -1,5 +1,6 @@
+import java.io.Serializable;
 
-public class CDriver {
+public class CDriver implements Serializable{
 
 	String customerNum;
 	String customerName;
@@ -40,16 +41,15 @@ public class CDriver {
 	private String newTransmission;
 	private String newRow;
 
-
 	public CDriver(String cNum, String cName, String cYears, String cJeep, String cModels, String cTransmission){
 
-		customerNum = cNum;
-		customerName = cName;
-		drivingYears = cYears;
-		jeepOwner = cJeep;
-		models = cModels;
-		transmission = cTransmission;
-		
+		setcNum(cNum);
+		setcName(cName);
+		setcYears(cYears);
+		setcJeep(cJeep);
+		setcModels(cModels);
+		setcTransmission(cTransmission);
+
 		System.out.print(models);
 		modelsArray = models.split("");
 		System.out.print(modelsArray);
@@ -58,14 +58,70 @@ public class CDriver {
 		model3 = modelsArray[2];
 		model4 = modelsArray[3];
 		model5 = modelsArray[4];
-		
-		
+
+
+	}
+	
+	public void setcNum(String cNum){
+		customerNum = cNum;
+	}
+	
+	public void setcName(String cName){
+		customerName = cName;
+	}
+	
+	public void setcYears(String cYears){
+		drivingYears = cYears;
+	}
+	
+	public void setcJeep(String cJeep){
+		jeepOwner = cJeep;
+	}
+	
+	public void setcModels(String cModels){
+		models = cModels;
+	}
+	
+	public void setcTransmission(String cTransmission){
+		transmission = cTransmission;
+	}
+	
+	public String getcNum(){
+		return customerNum;
+	}
+	
+	public String getcName(){
+		return customerName;
+	}
+	public String getcYears(){
+		return drivingYears;
+	}
+	public String getcJeep(){
+		return jeepOwner;
+	}
+	public String getcModel(){
+		return models;
+	}
+	public String getcTransmission(){
+		return transmission;
 	}
 
 	public String getCustomerNum(){return customerNum;}
-	
+
+	public String getCustomerArray(){
+		String tempYears;
+		String tempJeep;
+		String tempModel;
+		String tempTrans;
+		tempYears = getcYears();
+		tempJeep = getcJeep();
+		tempModel = getcModel();
+		tempTrans = getcTransmission();
+		String arr = customerNum + "," + customerName + ","  + tempYears + "," + tempJeep + "," + tempModel + "," + tempTrans;
+		return arr;
+	}
 	public String getCustomerData(){
-		
+
 		numCount = 17 - customerNum.length();
 		nameCount = 25 - customerName.length() - drivingYears.length();
 		//beforeYearsCount = 19 - customerName.length();
@@ -96,7 +152,7 @@ public class CDriver {
 		for (i=0; i<transmissionCount; i++){
 			tranmsissionSpaces += " ";
 		}
-		
+
 		newNum = customerNum + numSpaces;
 		newName = customerName + nameSpaces;
 		newYears = drivingYears + yearsSpaces;
@@ -106,7 +162,7 @@ public class CDriver {
 
 		newRow = newNum + newName + newYears + newJeep + newModel + newTransmission;
 		return newRow;
-		
+
 	}
 }
 

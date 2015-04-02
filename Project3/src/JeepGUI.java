@@ -1,4 +1,5 @@
 import java.awt.Component;
+import java.io.InputStreamReader;
 import java.awt.Container;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -6,12 +7,20 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
+import java.io.BufferedReader;
+import java.io.EOFException;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectInput;
+import java.io.ObjectInputStream;
 import java.io.PrintStream;
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.accessibility.AccessibleContext;
@@ -28,7 +37,7 @@ import javax.swing.JCheckBox;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JFileChooser;
 
-public class JeepGUI extends JFrame implements ActionListener
+public class JeepGUI extends JFrame implements ActionListener, Serializable
 {
 	//Jlabels
 	JLabel customerNoLabel;
@@ -44,6 +53,11 @@ public class JeepGUI extends JFrame implements ActionListener
 	JButton removeButton;
 	JButton clearButton;
 	JButton saveButton;
+	JButton openButton;
+
+	JFileChooser fileChooser;
+	int returnVal;
+	String record;
 
 	public static ArrayList<CDriver> customerList = new ArrayList<CDriver>();
 	static JTable guiTable;
@@ -69,6 +83,13 @@ public class JeepGUI extends JFrame implements ActionListener
 		saveButton.setLocation(100, 100);
 		saveButton.addActionListener(this);
 		c.add(saveButton);
+
+		openButton = new JButton("Open");
+		openButton.setSize(150, 50);
+		openButton.setLocation(150, 150);
+		openButton.addActionListener(this);
+		c.add(openButton);
+
 
 		editButton = new JButton("Edit");
 		editButton.setSize(150, 50);
@@ -135,6 +156,9 @@ public class JeepGUI extends JFrame implements ActionListener
 		c.add(customerCarTransmissionLabel);
 	}
 
+	;
+
+	@SuppressWarnings("resource")
 	public void actionPerformed(ActionEvent e) {
 		//addButton
 		if(e.getSource()==addButton) {
@@ -170,21 +194,63 @@ public class JeepGUI extends JFrame implements ActionListener
 			model.removeAllElements();
 			list.setModel(model);
 		}
+		else if(e.getSource()==openButton) {
+			fileChooser = new JFileChooser();
+			fileChooser.setDialogTitle("Choose a File to open");
+			fileChooser.setVisible(true);
+			returnVal = fileChooser.showSaveDialog(fileChooser);
+			System.out.println("Test");
+
+			if (returnVal == JFileChooser.APPROVE_OPTION) {
+				File file = fileChooser.getSelectedFile();
+				FileInputStream input;
+				BufferedReader reader;
+				try {
+					input = new FileInputStream(file);
+					reader = new BufferedReader(new InputStreamReader(input));
+					while(true){
+						try {
+							record =  reader.readLine();
+							System.out.println(record);
+							readInNewRecord(record);
+						} catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+					}
+				} catch (FileNotFoundException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+					return;
+				} catch (IOException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+					return;
+				}
+
+			}
+		}
 		else if(e.getSource()==saveButton) {
 			//filechooser
-			JFileChooser fileChooser = new JFileChooser();
+			fileChooser = new JFileChooser();
 			fileChooser.setDialogTitle("Choose a Save Filename");
 			fileChooser.setVisible(true);
-			int returnVal = fileChooser.showSaveDialog(fileChooser);
+			returnVal = fileChooser.showSaveDialog(fileChooser);
 			System.out.println("Test");
 
 			if (returnVal == JFileChooser.APPROVE_OPTION) {
 				File file = fileChooser.getSelectedFile();
 				try {
 					FileWriter writer = new FileWriter(file);
-					int size = model.getSize();
+					//int size = model.getSize();
+					int size = customerList.size();
+					String data;
+					CDriver curDriver;
 					for(int i = 0; i < size; i++){
-						writer.write(model.getElementAt(i).toString() + "\n");
+						curDriver = customerList.get(i);
+						data = curDriver.getCustomerArray();
+						System.out.println(data);
+						writer.write(data + "\n");
 					}
 					writer.close();
 				} catch (IOException e1) {
@@ -196,6 +262,14 @@ public class JeepGUI extends JFrame implements ActionListener
 		}
 	}
 
+	public static void readInNewRecord(String record){
+
+		List<String> items = Arrays.asList(record.split("\\s*,\\s*"));
+
+		addCustomerNum(items.get(0));
+		addCustomer(items.get(0), items.get(1), items.get(2), items.get(3), items.get(4), items.get(5));
+
+	}
 	public static void addCustomerNum(String customerNum){
 		Integer custNum = Integer.parseInt(customerNum);
 		customerNums.add(custNum);
