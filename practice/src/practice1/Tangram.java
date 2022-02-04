@@ -1,3 +1,5 @@
+package practice1;
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -8,7 +10,6 @@ import java.util.ArrayList;
 import javax.swing.JApplet;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
 
 public class Tangram extends JApplet  
 // public class Tangram extends JPanel  

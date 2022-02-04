@@ -33,7 +33,7 @@ public class CommissionEmployee
 	   lastName = last;
 	   setGrossSales(sales);
 	   setCommissionRate(rate);
-	// TODO Auto-generated constructor stub
+      
 }
    public void setBaseSalary(double baseSalary)
    {

@@ -1,4 +1,4 @@
-package circleRing;
+
 
 import java.awt.Color;
 import java.awt.Component;
@@ -26,7 +26,7 @@ public class cRing extends JPanel implements MouseListener{
 
 	public void paintComponent(Graphics g){
 			CRing(R, r);
-			g.drawImage(backBuffer);
+			//g.drawImage(backBuffer);
 			backBuffer = createImage(500, 500);
 			gBackBuffer = backBuffer.getGraphics();
 	}

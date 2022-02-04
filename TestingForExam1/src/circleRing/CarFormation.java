@@ -8,7 +8,6 @@ package circleRing;
  *  to create a car formation out of six model cars.
  *  
  */
-
 import javax.swing.JFrame;
 
 public class CarFormation
@@ -17,11 +16,11 @@ public class CarFormation
    { 
       JFrame application = new JFrame( "Car Formation" );
       
-      BuildingPanel buildingPanel = new BuildingPanel();
-      application.add(buildingPanel);
+      //BuildingPanel buildingPanel = new BuildingPanel();
+      //application.add(buildingPanel);
   
-      application.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
-      application.setSize( 1000, 800 ); // set frame size
-      application.setVisible( true ); // display frame
+      //application.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+      //application.setSize( 1000, 800 ); // set frame size
+      //application.setVisible( true ); // display frame
    }
 }

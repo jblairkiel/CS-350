@@ -15,7 +15,7 @@ public class ShapesTest {
 		int tileSize=50;
 		Scanner input;
 		try{
-			input=new Scanner(new File("truchet.txt"));
+			input=new Scanner(new File("Project1/src/input1.txt"));
 			tileChoice=input.nextInt();
 			tileSize=input.nextInt();
 			System.out.println(tileChoice);

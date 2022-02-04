@@ -1,3 +1,5 @@
+package practice1;
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Polygon;
